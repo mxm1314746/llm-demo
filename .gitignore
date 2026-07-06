@@ -1,0 +1,24 @@
+# API Key
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# ChromaDB
+demo2-rag/chroma_db/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Gradio
+*.gradio/
