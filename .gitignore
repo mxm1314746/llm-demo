@@ -14,6 +14,7 @@ demo2-rag/chroma_db/
 
 # 运行时记忆/订单数据（含个人记忆，勿开源）
 demo2-rag/memory_data/
+demo4-multi-agent/memory_data/
 demo5-travel-agent/data/orders.json
 demo5-travel-agent/data/eval_results/
 
