@@ -1,0 +1,100 @@
+# ============================================
+# GitHub Actions CI/CD — 南航智慧出行管家
+# 触发: push / pull request → main
+# 步骤: lint → test → build → deploy
+# ============================================
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  # ════════════════════════════════════════
+  # Job 1: 代码质量检查
+  # ════════════════════════════════════════
+  lint:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: 安装依赖
+        run: |
+          cd demo5-travel-agent
+          pip install -r requirements.txt
+          pip install ruff mypy pre-commit
+
+      - name: Ruff 代码风格检查
+        run: |
+          cd demo5-travel-agent
+          ruff check agent/ eval/ app.py api.py logger.py
+        continue-on-error: true
+
+      - name: pre-commit 检查
+        run: |
+          cd demo5-travel-agent
+          pre-commit run --all-files
+        continue-on-error: true
+
+  # ════════════════════════════════════════
+  # Job 2: 单元测试
+  # ════════════════════════════════════════
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: 安装依赖
+        run: |
+          cd demo5-travel-agent
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: 运行测试
+        run: |
+          cd demo5-travel-agent
+          python -m pytest tests/ -v --tb=short --junit-xml=report.xml
+
+      - name: 上传测试报告
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: demo5-travel-agent/report.xml
+
+  # ════════════════════════════════════════
+  # Job 3: Docker 构建
+  # ════════════════════════════════════════
+  build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 构建 Docker 镜像
+        run: |
+          cd demo5-travel-agent
+          docker build -t csair-travel-agent:${{ github.sha }} .
+
+      - name: 镜像标签
+        run: |
+          docker tag csair-travel-agent:${{ github.sha }} csair-travel-agent:latest

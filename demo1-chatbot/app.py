@@ -4,10 +4,14 @@
 """
 
 import os
+import sys
 import json
 import gradio as gr
 from openai import OpenAI
 from dotenv import load_dotenv
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import ui_theme as ui
 
 # ---------- 配置 ----------
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
@@ -111,8 +115,7 @@ def clear_all():
 
 # ==================== UI ====================
 
-CUSTOM_CSS = """
-footer { display: none !important; }
+CUSTOM_CSS = ui.THEME_CSS + """
 .parameter-row { gap: 12px; }
 .followup-row { gap: 8px; margin-top: -12px; }
 .followup-row button {
@@ -122,11 +125,8 @@ footer { display: none !important; }
 }
 """
 
-with gr.Blocks(title="AI 对话助手 - DeepSeek", fill_height=True, css=CUSTOM_CSS) as demo:
-    gr.Markdown("""
-        # 🤖 AI 对话助手
-        基于 **DeepSeek** 大模型 · 流式输出 · 智能追问推荐
-    """)
+with gr.Blocks(title="AI 对话助手 - DeepSeek", fill_height=True) as demo:
+    gr.HTML(ui.header_html("D1", "AI 对话助手", "基于 DeepSeek · 流式输出 · 智能追问推荐"))
 
     # ====== 参数区（始终可见） ======
     with gr.Row(elem_classes="parameter-row"):
@@ -153,7 +153,8 @@ with gr.Blocks(title="AI 对话助手 - DeepSeek", fill_height=True, css=CUSTOM_
         )
 
     # ====== 聊天区域 ======
-    chatbot = gr.Chatbot(label="💬 对话", placeholder="开始对话…", height=400)
+    chatbot = gr.Chatbot(label="💬 对话", placeholder="开始对话…", height=400,
+                         elem_classes=["ui-chat"])
 
     # ====== 追问推荐按钮 ======
     with gr.Row(elem_classes="followup-row") as followup_row:
@@ -164,11 +165,12 @@ with gr.Blocks(title="AI 对话助手 - DeepSeek", fill_height=True, css=CUSTOM_
     # ====== 输入区域 ======
     with gr.Row():
         msg = gr.Textbox(label="", placeholder="输入你的问题，按 Enter 发送…",
-                         scale=8, container=False)
-        send_btn = gr.Button("🚀 发送", scale=1, variant="primary")
+                         scale=8, container=False, elem_classes=["ui-search"])
+        send_btn = gr.Button("🚀 发送", scale=1, variant="primary",
+                             elem_classes=["ui-btn-primary"])
         clear_btn = gr.Button("🗑️ 清空", scale=1)
 
-    gr.Markdown("---\n*项目1: AI 对话助手 · 大模型应用开发实战*")
+    gr.HTML(ui.footer_html("Demo1 · AI 对话助手 · 独立开发 GitHub @mxm1314746"))
 
 
     # ==================== 事件绑定 ====================
@@ -206,4 +208,4 @@ if __name__ == "__main__":
     print(f"[启动] AI 对话助手")
     print(f"[地址] http://localhost:7860")
     demo.launch(server_name="127.0.0.1", server_port=7860,
-                theme=gr.themes.Soft())
+                theme=gr.themes.Soft(), css=CUSTOM_CSS)

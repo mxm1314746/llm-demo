@@ -16,12 +16,15 @@ from openai import OpenAI
 
 # 添加项目根目录到 Python 路径
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from core.orchestrator import Orchestrator
 from core.memory import SharedMemory
 from agents.data_agent import DataAgent
 from agents.analysis_agent import AnalysisAgent
 from agents.report_agent import ReportAgent
+
+import ui_theme as ui
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 
@@ -160,15 +163,10 @@ EXAMPLE_TASKS = [
     "搜索量子计算的最新突破，评估其对AI的影响",
 ]
 
-CUSTOM_CSS = """
-footer { display: none !important; }
-"""
+CUSTOM_CSS = ui.THEME_CSS
 
-with gr.Blocks(title="Multi-Agent 协作平台", fill_height=True, css=CUSTOM_CSS) as demo:
-    gr.Markdown("""
-        # 🤖 Multi-Agent 协作平台
-        多个专业 AI Agent **协同工作** · Orchestrator 编排 · 共享记忆
-    """)
+with gr.Blocks(title="Multi-Agent 协作平台", fill_height=True) as demo:
+    gr.HTML(ui.header_html("D4", "Multi-Agent 协作平台", "Orchestrator 编排 · 多角色 Agent 协作 · 共享记忆"))
 
     with gr.Row():
         with gr.Column(scale=7):
@@ -176,14 +174,16 @@ with gr.Blocks(title="Multi-Agent 协作平台", fill_height=True, css=CUSTOM_CS
                 label="💬 协作过程",
                 placeholder="输入一个研究任务，多个 Agent 会协作完成…",
                 height=500,
+                elem_classes=["ui-chat"],
             )
 
             with gr.Row():
                 msg = gr.Textbox(
                     label="", placeholder="例如: 搜索2026年AI融资事件并分析趋势",
-                    scale=8, container=False,
+                    scale=8, container=False, elem_classes=["ui-search"],
                 )
-                send_btn = gr.Button("🚀 执行", scale=1, variant="primary")
+                send_btn = gr.Button("🚀 执行", scale=1, variant="primary",
+                                     elem_classes=["ui-btn-primary"])
                 clear_btn = gr.Button("🗑️ 清空", scale=1)
 
             gr.Examples(
@@ -228,7 +228,7 @@ with gr.Blocks(title="Multi-Agent 协作平台", fill_height=True, css=CUSTOM_CS
                 ```
             """)
 
-    gr.Markdown("---\n*Demo4: Multi-Agent 协作 · 每个 Agent 都有自己的角色和工具*")
+    gr.HTML(ui.footer_html("Demo4 · Multi-Agent 协作平台 · 独立开发 GitHub @mxm1314746"))
 
     # ====== 事件 ======
     inputs = [msg, chatbot]

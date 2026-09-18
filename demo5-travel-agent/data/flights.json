@@ -1,0 +1,32 @@
+{
+  "flights": [
+    {"flight_no": "CZ3101", "from": "北京", "to": "上海", "from_code": "PEK", "to_code": "PVG", "departure": "07:00", "arrival": "09:15", "price": 1280, "cabin": "经济舱", "seats": 45, "date": "2026-07-09"},
+    {"flight_no": "CZ3103", "from": "北京", "to": "上海", "from_code": "PEK", "to_code": "PVG", "departure": "10:30", "arrival": "12:45", "price": 1580, "cabin": "经济舱", "seats": 32, "date": "2026-07-09"},
+    {"flight_no": "CZ3105", "from": "北京", "to": "上海", "from_code": "PEK", "to_code": "PVG", "departure": "15:00", "arrival": "17:15", "price": 1380, "cabin": "经济舱", "seats": 28, "date": "2026-07-09"},
+    {"flight_no": "CZ3107", "from": "北京", "to": "上海", "from_code": "PEK", "to_code": "PVG", "departure": "19:30", "arrival": "21:45", "price": 980, "cabin": "经济舱", "seats": 50, "date": "2026-07-09"},
+    {"flight_no": "CZ3201", "from": "上海", "to": "北京", "from_code": "PVG", "to_code": "PEK", "departure": "08:00", "arrival": "10:20", "price": 1350, "cabin": "经济舱", "seats": 38, "date": "2026-07-09"},
+    {"flight_no": "CZ3203", "from": "上海", "to": "北京", "from_code": "PVG", "to_code": "PEK", "departure": "13:00", "arrival": "15:20", "price": 1450, "cabin": "经济舱", "seats": 25, "date": "2026-07-09"},
+    {"flight_no": "CZ5101", "from": "广州", "to": "北京", "from_code": "CAN", "to_code": "PEK", "departure": "09:00", "arrival": "12:00", "price": 1680, "cabin": "经济舱", "seats": 40, "date": "2026-07-09"},
+    {"flight_no": "CZ5103", "from": "广州", "to": "北京", "from_code": "CAN", "to_code": "PEK", "departure": "16:00", "arrival": "19:00", "price": 1520, "cabin": "经济舱", "seats": 30, "date": "2026-07-09"},
+    {"flight_no": "CZ6101", "from": "北京", "to": "广州", "from_code": "PEK", "to_code": "CAN", "departure": "08:30", "arrival": "11:45", "price": 1720, "cabin": "经济舱", "seats": 35, "date": "2026-07-09"},
+    {"flight_no": "CZ6103", "from": "北京", "to": "广州", "from_code": "PEK", "to_code": "CAN", "departure": "14:00", "arrival": "17:15", "price": 1590, "cabin": "经济舱", "seats": 42, "date": "2026-07-09"},
+    {"flight_no": "CZ4101", "from": "北京", "to": "成都", "from_code": "PEK", "to_code": "CTU", "departure": "07:30", "arrival": "10:20", "price": 1150, "cabin": "经济舱", "seats": 48, "date": "2026-07-09"},
+    {"flight_no": "CZ4103", "from": "北京", "to": "成都", "from_code": "PEK", "to_code": "CTU", "departure": "13:00", "arrival": "15:50", "price": 1250, "cabin": "经济舱", "seats": 33, "date": "2026-07-09"},
+    {"flight_no": "CZ4201", "from": "成都", "to": "北京", "from_code": "CTU", "to_code": "PEK", "departure": "11:00", "arrival": "13:40", "price": 1180, "cabin": "经济舱", "seats": 36, "date": "2026-07-09"},
+    {"flight_no": "CZ8101", "from": "深圳", "to": "北京", "from_code": "SZX", "to_code": "PEK", "departure": "08:00", "arrival": "11:10", "price": 1650, "cabin": "经济舱", "seats": 40, "date": "2026-07-09"},
+    {"flight_no": "CZ8103", "from": "深圳", "to": "北京", "from_code": "SZX", "to_code": "PEK", "departure": "17:00", "arrival": "20:10", "price": 1420, "cabin": "经济舱", "seats": 28, "date": "2026-07-09"},
+    {"flight_no": "CZ9101", "from": "北京", "to": "深圳", "from_code": "PEK", "to_code": "SZX", "departure": "09:00", "arrival": "12:15", "price": 1680, "cabin": "经济舱", "seats": 30, "date": "2026-07-09"},
+    {"flight_no": "CZ5201", "from": "上海", "to": "广州", "from_code": "PVG", "to_code": "CAN", "departure": "07:30", "arrival": "09:50", "price": 1080, "cabin": "经济舱", "seats": 45, "date": "2026-07-09"},
+    {"flight_no": "CZ5203", "from": "上海", "to": "广州", "from_code": "PVG", "to_code": "CAN", "departure": "15:00", "arrival": "17:20", "price": 1180, "cabin": "经济舱", "seats": 38, "date": "2026-07-09"},
+    {"flight_no": "CZ5301", "from": "广州", "to": "上海", "from_code": "CAN", "to_code": "PVG", "departure": "08:00", "arrival": "10:15", "price": 1100, "cabin": "经济舱", "seats": 42, "date": "2026-07-09"},
+    {"flight_no": "CZ5303", "from": "广州", "to": "上海", "from_code": "CAN", "to_code": "PVG", "departure": "18:00", "arrival": "20:15", "price": 1050, "cabin": "经济舱", "seats": 35, "date": "2026-07-09"}
+  ],
+  "cities": ["北京", "上海", "广州", "成都", "深圳"],
+  "airports": {
+    "北京": {"code": "PEK", "name": "北京首都国际机场", "terminals": ["T1", "T2", "T3"]},
+    "上海": {"code": "PVG", "name": "上海浦东国际机场", "terminals": ["T1", "T2"]},
+    "广州": {"code": "CAN", "name": "广州白云国际机场", "terminals": ["T1", "T2"]},
+    "成都": {"code": "CTU", "name": "成都双流国际机场", "terminals": ["T1", "T2"]},
+    "深圳": {"code": "SZX", "name": "深圳宝安国际机场", "terminals": ["T3"]}
+  }
+}

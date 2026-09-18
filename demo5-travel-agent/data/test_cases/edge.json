@@ -1,0 +1,140 @@
+[
+  {
+    "id": "E01",
+    "scenario": "多意图-改签+选座",
+    "input": "帮我把订单CS-20260708-1234改签到CZ3103，再选个前排座位",
+    "category": "edge",
+    "expected_intent": "multi_intent",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "CZ3103"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E02",
+    "scenario": "多意图-查询+订票",
+    "input": "查北京到上海的航班，然后帮我订最早的",
+    "category": "edge",
+    "expected_intent": "multi_step",
+    "expected_slots": [
+      "北京",
+      "上海"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E03",
+    "scenario": "多意图-值机+选座",
+    "input": "帮我值机，订单CS-20260708-1234张三，顺便选个靠窗座位",
+    "category": "edge",
+    "expected_intent": "multi_intent",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "张三"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E04",
+    "scenario": "模糊意图",
+    "input": "明天出行",
+    "category": "edge",
+    "expected_intent": "clarify",
+    "expected_slots": [],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E05",
+    "scenario": "缺关键参数",
+    "input": "帮我订机票",
+    "category": "edge",
+    "expected_intent": "clarify",
+    "expected_slots": [],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E06",
+    "scenario": "模糊日期",
+    "input": "最近几天北京去上海的航班",
+    "category": "edge",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "北京",
+      "上海"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E07",
+    "scenario": "不存在的航班号",
+    "input": "帮我订CZ9999航班",
+    "category": "edge",
+    "expected_intent": "book_ticket",
+    "expected_slots": [],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E08",
+    "scenario": "不存在的订单号",
+    "input": "帮我退票，订单号CS-99999999-9999",
+    "category": "edge",
+    "expected_intent": "cancel_ticket",
+    "expected_slots": [],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E09",
+    "scenario": "多意图-退票+查询",
+    "input": "帮我退票CS-20260708-1234，再查一下深圳到北京的航班",
+    "category": "edge",
+    "expected_intent": "multi_intent",
+    "expected_slots": [],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E10",
+    "scenario": "超长文本",
+    "input": "你好我想问一下就是那个明天从北京出发去上海大概是早上七八点的样子然后我要靠窗的座位经济舱就行了还有我是明珠会员有什么优惠吗对了行李方面我想带一个行李箱和一个小背包",
+    "category": "edge",
+    "expected_intent": "multi_intent",
+    "expected_slots": [
+      "北京",
+      "上海"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E11",
+    "scenario": "口语化+语气词",
+    "input": "诶那个啥帮我看看呗明天北京飞广州有啥航班没",
+    "category": "edge",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "北京",
+      "广州"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "E12",
+    "scenario": "多意图-三个操作",
+    "input": "先帮我值机CS-20260708-1234张三，然后选靠窗座位，再查一下行李规定",
+    "category": "edge",
+    "expected_intent": "multi_intent",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "张三"
+    ],
+    "difficulty": "hard"
+  },
+  {
+    "id": "E13",
+    "scenario": "已改签再改签",
+    "input": "帮我把订单CS-20260708-1234再改签到CZ3107",
+    "category": "edge",
+    "expected_intent": "change_flight",
+    "expected_slots": [],
+    "difficulty": "hard"
+  }
+]

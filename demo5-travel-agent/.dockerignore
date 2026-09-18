@@ -1,0 +1,13 @@
+# 依赖
+__pycache__/
+*.pyc
+*.pyo
+.env
+.git/
+.gitignore
+*.md
+.pytest_cache/
+tests/
+Dockerfile
+docker-compose.yml
+.dockerignore

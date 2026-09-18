@@ -11,6 +11,7 @@
 """
 
 import os
+import sys
 import json
 import datetime
 import re
@@ -19,6 +20,9 @@ from openai import OpenAI
 import gradio as gr
 from dotenv import load_dotenv
 from duckduckgo_search import DDGS
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+import ui_theme as ui
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 
@@ -331,16 +335,12 @@ def clear_all():
 # ║  5. Gradio UI                                               ║
 # ╚══════════════════════════════════════════════════════════════╝
 
-CUSTOM_CSS = """
-footer { display: none !important; }
+CUSTOM_CSS = ui.THEME_CSS + """
 .thinking-box { background: #f0f7ff; border-radius: 8px; padding: 12px; }
 """
 
 with gr.Blocks(title="AI Agent - DeepSeek", fill_height=True) as demo:
-    gr.Markdown("""
-        # 🤖 AI Agent 智能助手 · 增强版
-        基于 **ReAct (Reasoning + Acting)** 模式 · 支持**多步推理**、**并发工具调用**
-    """)
+    gr.HTML(ui.header_html("D3", "AI Agent 智能助手 · 增强版", "ReAct 多步推理 · 并发工具调用 · 透明推理链"))
 
     with gr.Row():
         temperature = gr.Slider(0.0, 2.0, 0.5, step=0.1, label="🌡️ 温度")
@@ -356,29 +356,34 @@ with gr.Blocks(title="AI Agent - DeepSeek", fill_height=True) as demo:
             lines=2,
         )
 
-    gr.Markdown("""
-        💡 **示例任务** 👇
-        `计算 2^10 等于多少？`
-        `现在几点了？`
-        `搜索一下2026年AI领域的最新进展`
-        `帮我计算 3.14 * 25 再搜索一下圆周率的历史`
-    """)
-
     chatbot = gr.Chatbot(
         label="💬 对话",
         placeholder="输入任务，AI 会调用工具来完成…",
         height=400,
+        elem_classes=["ui-chat"],
     )
 
     with gr.Row():
         msg = gr.Textbox(
             label="", placeholder="输入你的任务…",
-            scale=8, container=False,
+            scale=8, container=False, elem_classes=["ui-search"],
         )
-        send_btn = gr.Button("🚀 执行", scale=1, variant="primary")
+        send_btn = gr.Button("🚀 执行", scale=1, variant="primary",
+                             elem_classes=["ui-btn-primary"])
         clear_btn = gr.Button("🗑️ 清空", scale=1)
 
-    gr.Markdown("---\n*原理: User → LLM(思考) → [调用工具 → 执行 → 结果回传]ⁿ → 最终答案*")
+    gr.Examples(
+        examples=[
+            ["计算 2^10 等于多少？"],
+            ["现在几点了？"],
+            ["搜索一下2026年AI领域的最新进展"],
+            ["帮我计算 3.14 * 25 再搜索一下圆周率的历史"],
+        ],
+        inputs=msg,
+        label="💡 示例任务（点击填入）",
+    )
+
+    gr.HTML(ui.footer_html("Demo3 · AI Agent 智能助手 · 独立开发 GitHub @mxm1314746"))
 
     # ====== 状态 ======
     messages_state = gr.State(None)  # 跨轮次保存完整消息历史

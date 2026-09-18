@@ -1,0 +1,41 @@
+# ============================================
+# pre-commit 配置 — 提交前自动检查
+# 安装: pip install pre-commit && pre-commit install
+# 手动运行: pre-commit run --all-files
+# ============================================
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.0
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        description: "Ruff: Python 代码风格和 Bug 检查"
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        description: "移除行尾多余空格"
+      - id: end-of-file-fixer
+        description: "确保文件末尾有空行"
+      - id: check-yaml
+        description: "YAML 语法检查"
+      - id: check-json
+        description: "JSON 语法检查"
+      - id: check-added-large-files
+        args: [--maxkb=500]
+        description: "检查是否有超过 500KB 的大文件"
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        args: [--profile=black, --line-length=120]
+        description: "import 排序"
+
+  - repo: https://github.com/psf/black
+    rev: 24.10.0
+    hooks:
+      - id: black
+        args: [--line-length=120]
+        description: "Black: Python 代码格式化"

@@ -1,0 +1,19 @@
+# ── 核心依赖 ──
+openai>=2.0.0
+python-dotenv>=1.0.0
+
+# ── UI ──
+gradio>=6.0.0
+
+# ── API ──
+fastapi>=0.115.0
+uvicorn>=0.34.0
+
+# ── 日志 ──
+loguru>=0.7.3
+
+# ── 测试 ──
+pytest>=9.0.0
+
+# ── 工具 ──
+httpx>=0.28.0

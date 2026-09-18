@@ -1,0 +1,313 @@
+[
+  {
+    "id": "N01",
+    "scenario": "航班查询-基础",
+    "input": "帮我查一下北京到上海的航班",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "北京",
+      "上海"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N02",
+    "scenario": "航班查询-指定日期",
+    "input": "7月9号广州飞北京有什么航班？",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "广州",
+      "北京",
+      "7月9"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N03",
+    "scenario": "航班查询-口语化",
+    "input": "明天从深圳去上海的飞机有哪些",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "深圳",
+      "上海",
+      "明天"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N04",
+    "scenario": "航班查询-成都北京",
+    "input": "查航班，成都到北京，7月9号",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "成都",
+      "北京"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N05",
+    "scenario": "行李查询-经济舱",
+    "input": "经济舱能带多少行李？",
+    "category": "normal",
+    "expected_intent": "query_baggage",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N06",
+    "scenario": "行李查询-液体",
+    "input": "坐飞机液体能带多少毫升？",
+    "category": "normal",
+    "expected_intent": "query_baggage",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N07",
+    "scenario": "行李查询-充电宝",
+    "input": "充电宝可以托运吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N08",
+    "scenario": "机场信息",
+    "input": "北京首都机场有哪些航站楼？",
+    "category": "normal",
+    "expected_intent": "get_airport_info",
+    "expected_slots": [
+      "PEK"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N09",
+    "scenario": "机场信息-交通",
+    "input": "白云机场怎么去市区？",
+    "category": "normal",
+    "expected_intent": "get_airport_info",
+    "expected_slots": [
+      "CAN"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N10",
+    "scenario": "政策-退票费",
+    "input": "退票手续费怎么算？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N11",
+    "scenario": "政策-改签",
+    "input": "机票能免费改签吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N12",
+    "scenario": "政策-宠物",
+    "input": "宠物可以带上飞机吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N13",
+    "scenario": "政策-延误",
+    "input": "航班延误了怎么办？有什么赔偿？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N14",
+    "scenario": "政策-儿童",
+    "input": "儿童票怎么买？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N15",
+    "scenario": "政策-选座费",
+    "input": "选座要额外收费吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N16",
+    "scenario": "订票-基础",
+    "input": "订一张明天北京到上海CZ3101的机票，张三，110101199001011234，13800138000",
+    "category": "normal",
+    "expected_intent": "book_ticket",
+    "expected_slots": [
+      "CZ3101",
+      "张三"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N17",
+    "scenario": "订票-需要搜索",
+    "input": "帮我订机票，明天北京到广州最早的航班",
+    "category": "normal",
+    "expected_intent": "multi_step",
+    "expected_slots": [
+      "北京",
+      "广州"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N18",
+    "scenario": "值机",
+    "input": "帮我值机，订单号CS-20260708-1234，旅客张三",
+    "category": "normal",
+    "expected_intent": "check_in",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "张三"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N19",
+    "scenario": "选座-靠窗",
+    "input": "帮我选个靠窗的座位，订单CS-20260708-1234",
+    "category": "normal",
+    "expected_intent": "select_seat",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "window"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N20",
+    "scenario": "选座-过道",
+    "input": "订单CS-20260708-1234，选个过道座位",
+    "category": "normal",
+    "expected_intent": "select_seat",
+    "expected_slots": [
+      "CS-20260708-1234",
+      "aisle"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N21",
+    "scenario": "行李-超重",
+    "input": "行李超重了怎么收费？",
+    "category": "normal",
+    "expected_intent": "query_baggage",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N22",
+    "scenario": "政策-证件丢失",
+    "input": "身份证丢了怎么坐飞机？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N23",
+    "scenario": "政策-网上值机时间",
+    "input": "网上值机什么时候开放？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N24",
+    "scenario": "机场-PVG",
+    "input": "浦东机场服务热线多少？",
+    "category": "normal",
+    "expected_intent": "get_airport_info",
+    "expected_slots": [
+      "PVG"
+    ],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N25",
+    "scenario": "航班查询-多日期",
+    "input": "查北京到上海明天和后天的航班",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "北京",
+      "上海"
+    ],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N26",
+    "scenario": "政策-明珠会员",
+    "input": "南航明珠会员有什么权益？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N27",
+    "scenario": "政策-中转行李",
+    "input": "中转航班行李能直挂目的地吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N28",
+    "scenario": "政策-药品携带",
+    "input": "胰岛素能带上飞机吗？",
+    "category": "normal",
+    "expected_intent": "query_policy",
+    "expected_slots": [],
+    "difficulty": "easy"
+  },
+  {
+    "id": "N29",
+    "scenario": "值机-基础",
+    "input": "CZ20250708001，帮我值机，旅客李四",
+    "category": "normal",
+    "expected_intent": "check_in",
+    "expected_slots": [],
+    "difficulty": "medium"
+  },
+  {
+    "id": "N30",
+    "scenario": "航班查询-深圳北京",
+    "input": "明天深圳飞北京的航班有哪些？",
+    "category": "normal",
+    "expected_intent": "search_flights",
+    "expected_slots": [
+      "深圳",
+      "北京"
+    ],
+    "difficulty": "easy"
+  }
+]
